@@ -636,7 +636,7 @@ Install-Docker()
     {
         # Default local host
         $daemonSettings | Add-Member NoteProperty hosts @("npipe://")
-        $daemonSettings | Add-Member NoteProperty experimental "true"
+        $daemonSettings | Add-Member NoteProperty experimental true
     }
 
     if ($NATSubnet -ne "")
