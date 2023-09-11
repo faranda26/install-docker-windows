@@ -636,13 +636,14 @@ Install-Docker()
     {
         # Default local host
         $daemonSettings | Add-Member NoteProperty hosts @("npipe://")
+        $daemonSettings | Add-Member NoteProperty experimental "true"
     }
 
     if ($NATSubnet -ne "")
     {
         $daemonSettings | Add-Member NoteProperty fixed-cidr $NATSubnet
     }
-
+    
     $daemonSettingsFile = Join-Path $dockerConfigPath "daemon.json"
 
     $daemonSettings | ConvertTo-Json | Out-File -FilePath $daemonSettingsFile -Encoding ASCII
